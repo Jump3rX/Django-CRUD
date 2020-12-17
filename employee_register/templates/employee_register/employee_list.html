@@ -1,0 +1,25 @@
+{% extends "employee_register/base.html"%} {% block content %}
+<table class="table table-bordered">
+    <thead>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Position</th>
+        <th>
+            <a href="{% url 'employee_insert' %}" class="btn">Add New<img src="https://img.icons8.com/emoji/28/000000/plus-emoji.png" /></a>
+        </th>
+    </thead>
+    <tbody class="table table-hover">
+        {% for employee in employee_list %}
+        <tr>
+            <td>{{employee.fullname}}</td>
+            <td>{{employee.mobile}}</td>
+            <td>{{employee.position}}</td>
+            <td>
+                <a href="{% url 'employee_update' employee.id %}" class="waves-effect waves-light btn"><img src="https://img.icons8.com/pastel-glyph/24/000000/edit--v2.png" /></a>
+                <a href="{% url 'employee_delete' employee.id %}" class="waves-effect waves-light btn"><img src="https://img.icons8.com/ios/24/000000/delete-trash.png" /></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br> {% endblock %}
